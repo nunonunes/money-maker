@@ -29,8 +29,8 @@ Connection to other systems
 I make use of several systems in this project, namely:
 
 - [Bitreserve][]: The broker I use to keep the actual currency (it has a nice
-                    [API|Bitreserve API][] and a nice 
-                    [Python SDK|Bitreserve Python SDK][]
+                    [API][Bitreserve API] and a nice 
+                    [Python SDK][Bitreserve Python SDK]
 - [Google Sheets][]: I like to keep a record of portfolios and transactions in
                      a nice spreadsheet. I access it through the very nice
                      [gspread][] module
@@ -60,7 +60,7 @@ This is still an experimental system and an ongoing project. These are the main 
 Kudos
 -----
 
-[Joao][] started me thinking about playing with currency arbitrage a while ago and inspired me to tackle the problem. His own dalliances with the same problem are also [public|moneybot][].
+[Joao][] started me thinking about playing with currency arbitrage a while ago and inspired me to tackle the problem. His own dalliances with the same problem are also [public][moneybot].
 
 
 [Bitreserve]: https://bitreserve.org
