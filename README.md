@@ -55,6 +55,8 @@ This is still an experimental system and an ongoing project. These are the main 
 - Create a weight system to enable keeping different relative values in each 
   currency
 - Create a dependencies file for auto installation
+- Create a way to run a sequence of simulated tickers (probably get the 
+  data from Yahoo Finance, using [PyAlgoTrade][])
 
 
 Kudos
@@ -72,3 +74,4 @@ Kudos
 [boto]: https://github.com/boto/boto3
 [Joao]: https://github.com/jneves
 [moneybot]: https://github.com/jneves/moneybot
+[PyAlgoTrade]: http://gbeced.github.io/pyalgotrade/
