@@ -1,0 +1,23 @@
+[Setup]
+currencies: { 'USD':{'min_transaction':0.01}, 'BTC':{'min_transaction':0.001}, 'EUR':{'min_transaction':0.01} }
+base_currency: USD
+
+[MoneyMaker]
+rebalance_threshold: 0.01
+
+[Broker]
+pat: my_bitreserve_pat
+
+[RecordKeeper]
+google_api_credentials_file: google_api_client_credentials.json
+spreadsheet_name: Bitreserve Portfolio
+worksheet_transactions: auto_transactions
+worksheet_portfolios: auto_portfolios
+max_retries: 5
+
+[Notifier]
+aws_access_key_id: my_aws_key_id
+aws_secret_access_key: my_aws_key
+region_name: us-east-1
+queue_name: my_queue_name
+recipient_jid: my_jid

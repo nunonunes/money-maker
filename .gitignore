@@ -1,0 +1,6 @@
+bitreserve
+google_api_client_credentials.json
+price-watcher.cfg
+*.log
+*.pyc
+*.swp
