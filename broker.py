@@ -6,6 +6,7 @@ At this time we are using Bitreserve (http://bitreserve.org/) through the Bitres
 
 import ConfigParser
 from bitreserve import Bitreserve
+import pprint
 
 class Broker(object):
     """
@@ -28,6 +29,7 @@ class Broker(object):
         self.currencies    = currencies
         self.base_currency = base_currency
         self.DEBUG         = DEBUG
+        self.pp            = pprint.PrettyPrinter()
 
 
     def get_tickers( self ):
@@ -83,10 +85,8 @@ class Broker(object):
         my_portfolio = {}
         all_of_me = self.api.get_me()
         if self.DEBUG:
-            import pprint
-            pp = pprint.PrettyPrinter()
             print "Broker: Balances I got:"
-            pp.pprint( all_of_me['balances'] )
+            self.pp.pprint( all_of_me['balances'] )
 
         total_balance = {
             'value':         float(all_of_me['balances']['total']),
@@ -136,7 +136,6 @@ class Broker(object):
             addresses[card['currency']] = card['address']['bitcoin']
 
         # Run through the transacctions and prepare them
-        ready_txns = []
         for trans in transactions:
             txn_id = self.api.prepare_txn(
                         addresses[trans['origin']],
@@ -145,29 +144,16 @@ class Broker(object):
                         trans['base_currency']
                     )
             if txn_id:
-                ready_txns.append({
-                            'id': txn_id,
-                            'origin': addresses[trans['origin']]
-                })
+                txn_result = self.api.execute_txn(
+                    addresses[trans['origin']],
+                    txn_id,
+                    'Money Maker automatic transaction'
+                )
+                if self.DEBUG:
+                    print 'Result:'
+                    self.pp.pprint( txn_result )
             else:
                 print "Broker: Something went wrong with the following transaction:"
-                import pprint
-                pp = pprint.PrettyPrinter()
-                pp.pprint( trans )
+                self.pp.pprint( trans )
                 return
 
-        # TODO: Test this out VERY THOROUGHLY before enabling it
-        import pprint
-        pp=pprint.PrettyPrinter()
-        print 'Broker: Created all the transactions and all appears to be well'
-        pp.pprint( ready_txns )
-        print 'Broker: Cowardly bailing out before committing them'
-        return
-
-        # If all went well...
-        for txn in ready_txns:
-            self.api.execute_txn(
-                txn['origin'],
-                txn['id'],
-                'Money Maker automatic transaction'
-            )

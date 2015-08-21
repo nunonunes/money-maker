@@ -216,7 +216,7 @@ class MoneyMaker(object):
                 transactions.append({
                     'origin': sender['currency'],
                     'destination': receiver['currency'],
-                    'value': amount_to_transfer,
+                    'amount': amount_to_transfer,
                     'base_currency': self.base_currency
                 })
                 receivers.pop(0)
@@ -227,7 +227,7 @@ class MoneyMaker(object):
                 transactions.append({
                     'origin': sender['currency'],
                     'destination': receiver['currency'],
-                    'value': amount_to_transfer,
+                    'amount': amount_to_transfer,
                     'base_currency': self.base_currency
                 })
                 senders.pop(0)

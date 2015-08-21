@@ -88,7 +88,7 @@ class RecordKeeper(object):
                 for t in transactions:
                     cells[i].value = date
                     i += 1
-                    for key in [ 'origin', 'destination', 'value', 'base_currency' ]:
+                    for key in [ 'origin', 'destination', 'amount', 'base_currency' ]:
                         cells[i].value = t[key]
                         i += 1
 
